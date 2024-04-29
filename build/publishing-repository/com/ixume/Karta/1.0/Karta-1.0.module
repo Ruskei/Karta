@@ -1,0 +1,60 @@
+{
+  "formatVersion": "1.1",
+  "component": {
+    "group": "com.ixume",
+    "module": "Karta",
+    "version": "1.0",
+    "attributes": {
+      "org.gradle.status": "release"
+    }
+  },
+  "createdBy": {
+    "gradle": {
+      "version": "8.5"
+    }
+  },
+  "variants": [
+    {
+      "name": "apiElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-api"
+      },
+      "files": [
+        {
+          "name": "Karta-1.0.jar",
+          "url": "Karta-1.0.jar",
+          "size": 82596,
+          "sha512": "f9f6afd41ae5f43d6faae9553a92b66623eeae04dfdb8d377d3c5bbb02c1edd84470b0e815b09a099e08d6b8434383a22a0d0429b61ec8885eb03d32e306a485",
+          "sha256": "4bd0c26ea3171b6f04009d1ce651ae5ad489b0c3c7acbee7708aaf6d38b04fdd",
+          "sha1": "c45a5c789b9703bb9b37d05ae9b87223d3abcdb7",
+          "md5": "71fb486b3f6767ee709bbbe524712c1c"
+        }
+      ]
+    },
+    {
+      "name": "runtimeElements",
+      "attributes": {
+        "org.gradle.category": "library",
+        "org.gradle.dependency.bundling": "external",
+        "org.gradle.jvm.version": 17,
+        "org.gradle.libraryelements": "jar",
+        "org.gradle.usage": "java-runtime"
+      },
+      "files": [
+        {
+          "name": "Karta-1.0.jar",
+          "url": "Karta-1.0.jar",
+          "size": 82596,
+          "sha512": "f9f6afd41ae5f43d6faae9553a92b66623eeae04dfdb8d377d3c5bbb02c1edd84470b0e815b09a099e08d6b8434383a22a0d0429b61ec8885eb03d32e306a485",
+          "sha256": "4bd0c26ea3171b6f04009d1ce651ae5ad489b0c3c7acbee7708aaf6d38b04fdd",
+          "sha1": "c45a5c789b9703bb9b37d05ae9b87223d3abcdb7",
+          "md5": "71fb486b3f6767ee709bbbe524712c1c"
+        }
+      ]
+    }
+  ]
+}
