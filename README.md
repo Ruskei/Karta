@@ -16,3 +16,4 @@ Base library for rendering a screen to a player.
 
 - Add right click, scrolling, and hotbar hotkey detection.
 - Cache component renders to improve performance.
+- Add vanilla shader to provide proper on-screen rendering, inspired by JNNGL, heavily expanding the scope of this plugin.
