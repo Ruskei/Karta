@@ -30,14 +30,22 @@ public class ScreensManager {
         screen.sendFull();
     }
 
-    public static boolean onPlayerMove(ServerboundMovePlayerPacket packet, Player player) {
-        if (packet.xRot == 0f && packet.yRot == 0f) {
+    public static void closeScreen(Player p) {
+        Optional<MapScreen> optionalScreen = getScreen(p);
+        optionalScreen.ifPresent((k) -> {
+            screens.remove(k);
+            k.closeScreen();
+        });
+    }
+
+    public static boolean onPlayerMove(double xRot, double yRot, Player player) {
+        if (xRot == 0d && yRot == 0f) {
             return false;
         }
 
         Optional<MapScreen> optionalScreen = getScreen(player);
 
-        optionalScreen.ifPresent(k -> k.onPlayerMove(packet.getYRot(0), packet.getXRot(0)));
+        optionalScreen.ifPresent(k -> k.onPlayerMove(xRot, yRot));
         return optionalScreen.isPresent();
     }
 

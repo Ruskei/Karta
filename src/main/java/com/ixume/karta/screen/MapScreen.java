@@ -2,7 +2,7 @@ package com.ixume.karta.screen;
 
 
 import com.ixume.karta.IDManager;
-import com.ixume.karta.Main;
+import com.ixume.karta.Karta;
 import com.ixume.karta.commands.ScreenCommandManager;
 import com.ixume.karta.gui.MapElement;
 import com.ixume.karta.render.MapScreenInteractionManager;
@@ -64,7 +64,7 @@ public abstract class MapScreen {
     }
 
     protected void initEnvironment() {
-        Vector3d roundedPos = Main.getInstance().getLocationManager().intakePlayer(player);
+        Vector3d roundedPos = Karta.getInstance().getLocationManager().intakePlayer(player);
         //adjust for horse mount offset + eye height in y-coord
         Vec3i origin = new Vec3i((int) (Math.floor(roundedPos.x - Math.floor(width / 2f) - (width % 2) * 0.5f - 1)),
                 (int) (roundedPos.y),
@@ -152,7 +152,7 @@ public abstract class MapScreen {
         }
     }
 
-    public void onPlayerMove(float xRot, float yRot) {
+    public void onPlayerMove(double xRot, double yRot) {
         cursor.cursorInput(xRot, yRot);
         interactionManager.mouseMoved(cursor.getX(), cursor.getY());
     }

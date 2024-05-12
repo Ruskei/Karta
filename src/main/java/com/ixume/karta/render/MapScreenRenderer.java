@@ -22,7 +22,7 @@ public class MapScreenRenderer {
         this.height = height;
         this.backgroundRenderer = backgroundRenderer;
         elementsToUpdate = new ArrayList<>();
-        previousActiveSections = RenderUtils.emptyActiveSections(mapScreen);
+        previousActiveSections = new boolean[width * height];
     }
 
     public void init() {
@@ -47,7 +47,7 @@ public class MapScreenRenderer {
     }
 
     private void render() {
-        boolean[] relevantSections = RenderUtils.emptyActiveSections(mapScreen);
+        boolean[] relevantSections = new boolean[width * height];
 
         if (mapScreen.getInteractionManager().hasMovedMouse()) {
             mapScreen.getCursor().render().forEach(i -> relevantSections[i] = true);
@@ -63,16 +63,20 @@ public class MapScreenRenderer {
             }
         }
         //add all the previous sections
+        int z = 0;
         boolean[] mergedActiveSections = relevantSections.clone();
         for (int i = 0; i < previousActiveSections.length; i++) {
             if (previousActiveSections[i] || relevantSections[i]) {
                 backgroundRenderer.drawBackground(i);
+                z++;
             }
 
             if (previousActiveSections[i]) {
                 mergedActiveSections[i] = true;
             }
         }
+
+        System.out.println("redrew " + z + " sections");
 
         List<MapElement> relevantElements = getRelevantElements(elementsToUpdate, mergedActiveSections);
         relevantElements = new ArrayList<>(relevantElements);

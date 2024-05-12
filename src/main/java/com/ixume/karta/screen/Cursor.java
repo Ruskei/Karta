@@ -1,8 +1,8 @@
 package com.ixume.karta.screen;
 
-import com.ixume.karta.render.RenderUtils;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.level.saveddata.maps.MapDecoration;
+import org.joml.Vector2d;
 import org.joml.Vector2f;
 
 import java.util.HashSet;
@@ -40,9 +40,9 @@ public class Cursor {
         return (int) Math.floor(y / 2);
     }
 
-    public void cursorInput(float xRot, float yRot) {
+    public void cursorInput(double xRot, double yRot) {
         //clamp to borders & max movement
-        Vector2f delta = new Vector2f(xRot, yRot);
+        Vector2d delta = new Vector2d(xRot, yRot);
         double distance = Math.sqrt(xRot*xRot + yRot*yRot);
         if (distance > threshold) {
             delta.mul((float) (threshold / distance));
@@ -65,11 +65,11 @@ public class Cursor {
         int visualX = x + 1;
         int visualY = y + 1;
         //find which section to draw the cursor on
-        int oldSectionIndex = RenderUtils.sectionFromPos(mapScreen.getWidth(), (int) Math.floor(visualOldX / 2), (int) Math.floor(visualOldY / 2));
+        int oldSectionIndex = sectionFromPos(mapScreen.getWidth(), (int) Math.floor(visualOldX / 2), (int) Math.floor(visualOldY / 2));
         IndividualMap oldMap = mapScreen.getMaps().get(oldSectionIndex);
         oldMap.icons.clear();
         activeSections.add(oldSectionIndex);
-        int sectionIndex = RenderUtils.sectionFromPos(mapScreen.getWidth(), (int) Math.floor(visualX / 2), (int) Math.floor(visualY / 2));
+        int sectionIndex = sectionFromPos(mapScreen.getWidth(), (int) Math.floor(visualX / 2), (int) Math.floor(visualY / 2));
         IndividualMap activeMap = mapScreen.getMaps().get(sectionIndex);
         activeSections.add(sectionIndex);
 
@@ -81,5 +81,9 @@ public class Cursor {
         oldY = y;
 
         return activeSections;
+    }
+
+    public static int sectionFromPos(int width, int x, int y) {
+        return (int) (Math.floor(x / 128f) + Math.floor(y / 128f) * width);
     }
 }
